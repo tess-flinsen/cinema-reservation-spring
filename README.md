@@ -15,9 +15,16 @@ This project is a cinema ticket booking website developed as a laboratory work f
 - Administrators can create, edit, and delete session and ticket information.
 
 ## Project Structure
-- **Entities**: Session, Seat
+- **Entities**: Session, Seat, Movie, Booking
 - **Actors**: Guest, Administrator
 - **Use Cases**:
   - Guest: View sessions, book tickets
   - Administrator: Manage sessions and tickets
+
+
+## Contributors
+* Гордич Оксана
+* Мунтяну Анастасія
+* Герасимчук Павло 
+* Прокопішин Олексій
 

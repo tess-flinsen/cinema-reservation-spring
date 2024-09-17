@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+
 
 @Entity
 public class Seat {
@@ -15,6 +19,9 @@ public class Seat {
     private Integer rowNumber;
     private Integer seatNumber;
     private boolean isAvailable;
+
+    @OneToMany(mappedBy = "seat")
+    private List<Booking> bookings;
     
     public Seat() {}
 
@@ -22,6 +29,13 @@ public class Seat {
         this.rowNumber = rowNumber;
         this.seatNumber = seatNumber;
         this.isAvailable = isAvailable;
+    }
+
+    public List<Booking> getBookings() { 
+        return bookings; 
+    }
+    public void setBookings(List<Booking> bookings) { 
+        this.bookings = bookings; 
     }
 
     public Long getId() {

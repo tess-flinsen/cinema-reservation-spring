@@ -1,0 +1,462 @@
+* {
+    max-height: 100000px
+}
+body {
+    margin: 0;
+    color: #2b231f;
+    font: 12px/15px 'Open Sans', Arial, Helvetica, sans-serif;
+    background: #e7e4e2;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: none;
+    min-width: 768px
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.49);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.header-container h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+img {
+    border-style: none;
+    max-width: 100%;
+    height: auto;
+    display: block
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    outline: 0
+}
+
+a:hover {
+    text-decoration:underline
+}
+a:active:not(.btn-all-dates) {
+    background-color:transparent
+}
+
+#wrapper {
+    width: 100%;
+    overflow: hidden
+}
+
+#content {
+    width: 100%;
+    overflow: hidden;
+    min-height: 582px
+}
+
+#content.add {
+    padding: 86px 0 55px;
+    background:#fff
+}
+
+.content-holder:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.content-holder {
+    max-width: 1175px;
+    margin: 0 auto;
+    padding:0 25px
+}
+
+.film-box {
+    position: relative;
+    width: 200px;
+    float:left
+}
+
+.film-box:hover {
+    -webkit-box-shadow: 0 3px 8px rgba(57, 40, 26, .3);
+    box-shadow: 0 3px 8px rgba(57, 40,26,.3)
+}
+
+.film-box .img-holder {
+    width: 200px;
+    height: 280px;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    overflow:hidden
+}
+
+.film-box .img-holder a {
+    display:block;
+    height:100%
+}
+
+.film-box .img-holder img {
+    height: 100%;
+    width: 100%
+}
+
+.film-box .sub-info {
+    overflow:hidden;
+    background: #ffa700
+}
+
+.film-box-holder:after {
+    content:'';
+    display:block;
+    clear: both
+}
+
+.film-box-holder{
+    margin:0 0 0 -25px
+}
+
+.film-box-holder .film-box {
+    margin: 0 0 25px 25px;
+    float: left;
+    width:175px;
+    height: 325px
+}
+
+.film-box-holder .film-box .img-holder {
+    position: relative;
+    width: 100%;
+    height: 248px;
+    background: url(../images/bg-cover.jpg) no-repeat;
+    -webkit-background-size:100% 100%;
+    background-size:100% 100%
+}
+
+.film-box-holder .film-box .sub-info {
+    background: #fff;
+    text-align: center;
+    padding: 10px 5px 0
+}
+
+.film-box-holder .film-title {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 600;
+    margin: 0 0 -3px;
+    height: 28px;
+    text-transform: uppercase;
+    color:#2b231f;
+    position:relative;
+    display:table;
+    width:100%
+}
+
+.film-box-holder .film-title span {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%
+}
+
+.film-box-holder .film-title:hover {
+    color: #ffae00;
+    text-decoration:underline
+}
+
+.show-all-holder{
+    text-align: center
+}
+
+.schedule-section {
+    width: 100%;
+    overflow:hidden;
+    background: #e7e4e2
+}
+
+.schedule-section-holder {
+    padding: 50px 0 0;
+    max-width: 1225px;
+    margin: 0 auto
+}
+
+.schedule-section .heading {
+    padding: 0 25px 17px;
+    overflow: hidden
+}
+
+.schedule-section .title{
+    font-size:25px;
+    line-height:27px;
+    overflow:hidden;
+    font-weight:600
+}
+
+.schedule-section .day {
+    display: inline-block;
+    vertical-align: top;
+    margin: 9px 0 0 15px;
+    font-size: 15px;
+    line-height: 17px
+}
+
+.schedule-box {
+    width: 100%;
+    overflow: hidden;
+    position:relative
+}
+
+.schedule-box .schedule-row {
+    overflow: hidden;
+    background: #fff;
+    margin: 0 0 2px;
+    padding:20px 25px 0;
+    position: relative
+}
+
+.schedule-box .theater-info {
+    float: left;
+    width:250px;
+    margin: 0 20px 20px 0
+}
+
+.schedule-box .theater-logo {
+    display: inline-block;
+    vertical-align: middle;
+    width:75px;
+    margin: 0 15px 0 0
+}
+
+.schedule-box .theater-name {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+    width: 155px;
+    color: #352f2c;
+    text-decoration: underline
+}
+
+.schedule-box .schedule-holder{
+    margin: 3px 0 0;
+    display: table
+}
+
+.schedule-box .schedule-frame{
+    overflow: hidden;
+    margin: 0 0 10px
+}
+
+.schedule-box .day-schedule {
+    float: left;
+    font-size: 13px;
+    line-height: 32px;
+    font-weight: 600;
+    margin: 0 5px 0 0;
+    width:122px
+}
+
+.schedule-box .schedule-list {
+    padding: 0;
+    list-style:none;
+    overflow:hidden;
+    margin:0
+}
+
+.schedule-box .schedule-list li {
+    float: left;
+    margin: 0 20px 10px 0;
+    width: 56px
+}
+
+.schedule-box .schedule-list .passed, .schedule-box .schedule-list a {
+    border: 1px solid #d4d4d4;
+    -webkit-border-radius: 2px;
+    -moz-border-radius:2px;
+    border-radius:2px;
+    display:block;
+    font-size:13px;
+    line-height: 30px;
+    text-align:center;
+    position:relative
+}
+
+.schedule-box .schedule-list .buy {
+    display:none
+}
+
+.schedule-box .schedule-list .passed {
+    color: #c1bcb9;
+    border-color: transparent
+}
+
+.tabs-holder:after{
+    content:'';
+    display: block;
+    clear: both
+}
+
+.tabs-holder {
+    width: 100%;
+    z-index: 3;
+    margin: -50px 0 0;
+    position: relative
+}
+
+.tabset {
+    max-width: 1175px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 0 25px;
+    list-style: none;
+    font-size: 16px;
+    line-height: 18px
+}
+
+.tabset li {
+    float: left
+}
+
+.tabset a {
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    padding:16px 18px 14px
+}
+
+.tabset a:hover span{
+    background:0 0
+}
+
+.tab-content:after{
+    content:'';
+    display:block;
+    clear:both
+}
+
+.tab-content{
+    width: 100%;
+    background: #fff;
+    padding: 0
+}
+
+.filter-holder:after {
+    content: '';
+    display: block;
+    clear: both
+}
+
+.filter:after {
+    content: '';
+    display: block;
+    clear:both
+}
+
+.filter {
+    width: 100%;
+    padding: 15px 0 5px 0;
+    background: #fff;
+    z-index:99
+}
+
+.filter-holder{
+    max-width:1175px;
+    padding: 0 25px;
+    margin: 0 auto
+}
+
+.theater-filter {
+    width: 100%;
+    overflow:hidden
+}
+
+.film-filter {
+    width: 100%;
+    overflow: hidden;
+    margin:0 0 20px
+}
+
+.film-logo-holder{
+    float:left;
+    width:125px;
+    height:179px;
+    margin:0 28px 20px 0
+}
+
+.schedule-box .film-info {
+    width: 100%;
+    overflow:hidden;
+    margin:-3px 0 17px
+}
+
+.schedule-box .film-info .title-heading {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 9px
+}
+
+.schedule-box .film-info .film-name {
+    font-size: 22px;
+    line-height: 24px;
+    max-width: 570px;
+    color:#352f2c;
+    margin:0 32px 0 0;
+    float:left
+}
+
+.schedule-box .film-info .sub-title {
+    font-size: 13px;
+    line-height: 15px;
+    color: #a2a2a2
+}
+
+.img-list {
+    margin: 0 0 27px;
+    padding: 0;
+    list-style:none
+}
+
+.img-list li {
+    margin: 0 0 21px
+}
+
+.film-heading{
+    font-size:23px;
+    line-height: 25px;
+    font-weight:400;
+    margin:0 0 14px
+}
+
+.film-heading span {
+    font-size: 15px;
+    line-height: 27px;
+    margin: 0 0 0 10px
+}
+
+.tabs-holder-show {
+    margin: -44px 0 0
+}
+
+.tabs-holder-show .tabset a,.tabs-holder-show .tabset a:active {
+    color: #ffa700;
+    display:block;
+    overflow:hidden;
+    padding:10px 31px 11px 15px;
+    display: inline-block;
+    background-color: #433c3a;
+    position:relative;
+    top:3px
+}
+
+.tabs-holder-show .tabset a:after {
+    content: '';
+    width: 9px;
+    display:block;
+    height:6px;
+    top:16px;
+    right:13px;
+    position:absolute;
+}
+
+.film-title-list{
+    padding-bottom:7px
+}
+

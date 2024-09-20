@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Seats</title>
+  <link href="/css/seats-styles.css?version=1" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<header>
+  <h3 th:text="${movieSession.movie.title}">Movie Title</h3>
+  <h4 th:text="${movieSession.startTime}">Session Name</h4>
+  <span>Price</span>
+  <span th:text="${movieSession.price}"></span>
+</header>
+
+<div class="card d-flex align-items-center rounded">
+  <div class="movie-seatmap-wrapper">
+    <div class="d-flex flex-column seats-inner-wrapper align-items-center">
+      <div class="screen">
+        <img src="https://storage.googleapis.com/bookmepk/static/custom/V5/cinema/movie-top-screen.png" alt="Screen">
+      </div>
+      <div class="seats-wrapper">
+        <div th:each="row : ${groupedSeats}" class="seats-row d-flex">
+          <div class="row-number" th:text="${row.key}"></div>
+          <div th:each="seat : ${row.value}"
+               class="movie-seat"
+               th:text="${seat.seatNumber}"
+               th:classappend="${seat.isAvailable} ? 'available' : 'unavailable'"
+               th:attr="data-seat-id=${seat.id}">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

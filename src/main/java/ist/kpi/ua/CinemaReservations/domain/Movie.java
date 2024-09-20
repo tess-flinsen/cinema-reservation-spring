@@ -1,9 +1,8 @@
 package ist.kpi.ua.CinemaReservations.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 
 @Entity
@@ -15,6 +14,9 @@ public class Movie {
     private String title;
     private String genre;
     private Integer duration;
+
+    @OneToMany(mappedBy = "movie")
+    private List<Session> sessions;
 
     public Movie() {};
 
@@ -48,7 +50,9 @@ public class Movie {
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
-    
+
+    public void setSessions(List<Session> sessions) {this.sessions = sessions;}
+    public List<Session> getSessions() { return sessions; }
 
 
 

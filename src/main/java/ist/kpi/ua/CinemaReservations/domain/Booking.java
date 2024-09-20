@@ -1,10 +1,9 @@
 package ist.kpi.ua.CinemaReservations.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 public class Booking {
@@ -16,8 +15,8 @@ public class Booking {
     @ManyToOne
     private Session session;
 
-    @ManyToOne
-    private Seat seat;
+    @ManyToMany(mappedBy = "bookings")
+    private List<Seat> seats;
 
     private boolean isBooked; 
 
@@ -25,9 +24,9 @@ public class Booking {
 
     public Booking() {}
 
-    public Booking(Session session, Seat seat, boolean isBooked) {
+    public Booking(Session session, List<Seat> seats, boolean isBooked) {
         this.session = session;
-        this.seat = seat;
+        this.seats = seats;
         this.isBooked = isBooked;
         this.totalPrice = calculateTotalPrice();
     }
@@ -37,10 +36,20 @@ public class Booking {
     // за стандартом місця мають коефіцієнт 1, і загальна ціна = базовій ціні сеансу
 
     private Double calculateTotalPrice() {
-        if (session != null && seat != null) {
+        /*if (session != null && seat != null) {
             return session.getPrice() * (seat.getPriceModifier() != null ? seat.getPriceModifier() : 1);
         }
-        return 0.0;  
+        return 0.0;  */
+
+        if (session == null || seats.stream().anyMatch(Objects::isNull)){
+            return 0.0;
+        }
+        return seats.stream()
+                    .map(seat ->
+                            session.getPrice() *
+                                   (seat.getPriceModifier() != null ?
+                                    seat.getPriceModifier() : 1))
+                    .reduce(0.0, Double::sum);
     }
     
     public void updateTotalPrice() {
@@ -72,12 +81,12 @@ public class Booking {
         this.session = session;
     }
 
-    public Seat getSeat() {
-        return seat;
+    public List<Seat> getSeats() {
+        return seats;
     }
 
-    public void setSeat(Seat seat) {
-        this.seat = seat;
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 
     public boolean isBooked() {

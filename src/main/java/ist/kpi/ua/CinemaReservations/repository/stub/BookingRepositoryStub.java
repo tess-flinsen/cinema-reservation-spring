@@ -2,11 +2,13 @@ package ist.kpi.ua.CinemaReservations.repository.stub;
 
 import ist.kpi.ua.CinemaReservations.domain.Booking;
 import ist.kpi.ua.CinemaReservations.repository.BookingRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class BookingRepositoryStub implements BookingRepository {
 
     private List<Booking> bookings = new ArrayList<>();

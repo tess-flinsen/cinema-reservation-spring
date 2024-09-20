@@ -1,11 +1,8 @@
 package ist.kpi.ua.CinemaReservations.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,7 +19,7 @@ public class Seat {
 
     private Double priceModifier = 1.0;  // за замовчуванням коефіцієнт ціни за певне місце = 1
 
-    @OneToMany(mappedBy = "seat")
+    @ManyToMany(mappedBy = "seats")
     private List<Booking> bookings;
     
     public Seat() {}
@@ -45,6 +42,14 @@ public class Seat {
     }
     public void setBookings(List<Booking> bookings) { 
         this.bookings = bookings; 
+    }
+    public void addBooking(Booking booking) {
+        if (this.bookings == null) {
+            this.bookings = new ArrayList<Booking>(List.of(booking));
+        }
+        else {
+            this.bookings.add(booking);
+        }
     }
 
     public Long getId() {

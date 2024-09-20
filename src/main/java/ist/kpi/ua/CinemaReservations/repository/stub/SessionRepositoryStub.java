@@ -1,12 +1,16 @@
 package ist.kpi.ua.CinemaReservations.repository.stub;
 
+import ist.kpi.ua.CinemaReservations.domain.Movie;
 import ist.kpi.ua.CinemaReservations.domain.Session;
 import ist.kpi.ua.CinemaReservations.repository.SessionRepository;
+import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class SessionRepositoryStub implements SessionRepository {
 
     private List<Session> sessions = new ArrayList<>();
@@ -18,7 +22,10 @@ public class SessionRepositoryStub implements SessionRepository {
 
     @Override
     public Optional<Session> findById(Long id) {
-        return sessions.stream().filter(session -> session.getId().equals(id)).findFirst();
+        // return sessions.stream().filter(session -> session.getId().equals(id)).findFirst();
+        return Optional.of(new Session(new Movie("Movie title", "Movie genre", 123),
+                LocalDateTime.of(2025, 01, 01, 15, 30, 0),
+                100.0));
     }
 
     @Override

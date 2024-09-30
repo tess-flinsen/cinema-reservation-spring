@@ -1,0 +1,181 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #999;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.form-group input,
+.form-group select{
+    width: calc(100% - 30px);
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group input:valid,
+.form-group select:focus,
+.form-group select:valid {
+    outline: none;
+    border-color: #007bff;
+    background-color: #fff;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group input:valid + label,
+.form-group select:focus + label,
+.form-group select:valid + label {
+    outline: none;
+    top: -10px;
+    left: 10px;
+    font-size: 12px;
+    color: #007bff;
+}
+
+.form-group input[type="file"] {
+    /*padding: 0;*/
+    font-size: 14px;
+    background-color: transparent;
+}
+
+.custom-file-upload {
+    display: block;
+    width: calc(100% - 30px); /* Тепер має ту ж ширину, що й інші поля */
+    padding: 12px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    color: #333;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+    margin-bottom: 20px; /* Додаємо відступ, як у інших полів */
+}
+
+.custom-file-upload:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+input[type="file"] {
+    /*display: none;*/
+}
+
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 0 0;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button {
+    background-color: #007bff; /* Синій */
+}
+
+.submit-button:hover {
+    background-color: #0056b3; /* Темніший синій на наведенні */
+}
+
+.delete-button {
+    display: inline-block; /* Для того, щоб <a> поводився як кнопка */
+    background-color: #ff4400; /* Червоний */
+}
+
+button a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.delete-button:hover {
+    background-color: #cc3700; /* Темніший червоний на наведенні */
+}
+
+/* Стилі для випадаючого списку */
+.dropdown {
+    position: relative; /* Випадаючий список позиціюється відносно контейнера */
+    display: inline-block; /* Визначає елемент як інлайн-блок */
+}
+
+.dropbtn {
+    background-color: #007bff; /* Синій фон для кнопки */
+    color: white;              /* Білий текст */
+    padding: 10px 15px;       /* Внутрішні відступи */
+    border: none;              /* Без рамки */
+    cursor: pointer;           /* Курсор на кнопку */
+    border-radius: 4px;       /* Закруглені кути */
+}
+
+.dropdown-content {
+    display: none;             /* Приховати вміст за замовчуванням */
+    position: absolute;        /* Абсолютне позиціонування */
+    background-color: white;   /* Білий фон */
+    min-width: 200px;         /* Мінімальна ширина випадаючого списку */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Тінь */
+    z-index: 1;               /* Показувати поверх інших елементів */
+}
+
+.dropdown-content li {
+    padding: 8px 12px;        /* Внутрішні відступи для елементів списку */
+}
+
+.dropdown-content li a {
+    text-decoration: none;     /* Без підкреслення */
+    color: black;             /* Чорний текст */
+    display: block;           /* Блоковий елемент */
+}
+
+.dropdown-content li a:hover {
+    background-color: #f1f1f1; /* Змінити фон при наведенні */
+}
+
+/* Відобразити випадаючий список при наведенні на контейнер */
+.dropdown:hover .dropdown-content {
+    display: block;           /* Відобразити вміст при наведенні на контейнер */
+}
+
+

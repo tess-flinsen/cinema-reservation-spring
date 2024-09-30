@@ -8,7 +8,7 @@ body {
     background: #e7e4e2;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: none;
-    min-width: 768px
+    min-width: 768px;
 }
 
 header {
@@ -45,13 +45,16 @@ a:active:not(.btn-all-dates) {
 
 #wrapper {
     width: 100%;
-    overflow: hidden
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #content {
     width: 100%;
     overflow: hidden;
-    min-height: 582px
+    min-height: 582px;
 }
 
 #content.add {
@@ -68,7 +71,7 @@ a:active:not(.btn-all-dates) {
 .content-holder {
     max-width: 1175px;
     margin: 0 auto;
-    padding:0 25px
+    padding:0 25px;
 }
 
 .film-box {
@@ -258,13 +261,24 @@ a:active:not(.btn-all-dates) {
     padding: 0;
     list-style:none;
     overflow:hidden;
-    margin:0
+    margin:0;
+    display: flex; /* Вирівнювання елементів у рядок */
+    align-items: center; /* Вирівнювання по вертикалі */
+    justify-content: space-between; /* Розтягнення елементів на всю ширину */
 }
 
-.schedule-box .schedule-list li {
-    float: left;
+
+.schedule-list li {
+    display: flex; /* Вирівнювання елементів у рядок */
+    align-items: center; /* Вирівнювання по вертикалі */
+    justify-content: space-between; /* Розтягнення елементів на всю ширину */
+    padding: 5px 0;
+}
+
+.schedule-box {
+    /*float: left;*/
     margin: 0 20px 10px 0;
-    width: 56px
+    /*width: 56px*/
 }
 
 .schedule-box .schedule-list .passed, .schedule-box .schedule-list a {
@@ -276,7 +290,9 @@ a:active:not(.btn-all-dates) {
     font-size:13px;
     line-height: 30px;
     text-align:center;
-    position:relative
+    position:relative;
+    padding:2px;
+    margin: 8px;
 }
 
 .schedule-box .schedule-list .buy {
@@ -460,3 +476,33 @@ a:active:not(.btn-all-dates) {
     padding-bottom:7px
 }
 
+.blue-button {
+    background-color: #007bff; /* Синій фон */
+    color: white; /* Білий колір іконки */
+    border: none; /* Відсутність обведення */
+    padding: 8px 12px; /* Внутрішні відступи */
+    border-radius: 4px; /* Закруглені краї кнопки */
+    cursor: pointer; /* Вказівник миші */
+    font-size: 16px; /* Розмір іконки */
+    display: inline-block; /* Для вирівнювання в рядок */
+    /*max-height: 18px;*/
+    /*max-width: 40px;*/
+}
+
+.blue-button:hover {
+    background-color: #0056b3; /* Темніший синій на наведенні */
+}
+
+.blue-button:focus {
+    outline: none; /* Відключити рамку фокуса */
+}
+
+.create-button{
+    margin-left: 45%;
+    color: white;
+    margin-bottom: 18px;
+}
+.create-button a{
+    color: white;
+    text-decoration: none;
+}

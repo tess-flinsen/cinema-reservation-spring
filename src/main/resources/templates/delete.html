@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm deletion</title>
+    <link href="/css/form.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Підтвердження видалення</h2>
+    <p>Ви дійсно хочете видалити сеанс?</p>
+    <form action="#" method="post">
+        <button type="button" class="delete-button" onclick="window.history.back();">
+            Підтвердити видалення
+        </button>
+
+        <button type="submit" class="submit-button">
+            <a th:href="@{/admin/update}" class="submit-button">
+                Повернутися до редагування
+            </a>
+        </button>
+    </form>
+</div>
+
+</body>
+</html>

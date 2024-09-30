@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Кінотеатр</title>
+    <link href="/css/styles.css?version=1" rel="stylesheet">
+    <!-- Movie images from https://www.cinepolisusa.com/movies/ -->
+</head>
+<body>
+
+<header>
+    <div>
+        <h1>Cinema Tickets Reservation Website</h1>
+    </div>
+</header>
+
+<div id="wrapper">
+    <div id="content">
+        <div class="tabs-holder">
+            <div class="tab-content">
+                <div class="tab" id="tab-table">
+                    <section class="schedule-section">
+                        <div class="schedule-section-holder">
+                            <div th:each="entry : ${moviesWithGroupedSessions}" class="schedule-box">
+                                <div class="schedule-row">
+                                    <a class="film-logo-holder" href="/ua/show/10373-dedpul-i-rosomaha-deadpool-wolverine/kyiv/boomer">
+                                        <img th:alt="${entry.key.title}"
+                                             th:src="@{'/images/' + ${entry.key.getId()} + '.jpg'}"
+                                             width="175"
+                                             height="248"/>
+                                    </a>
+
+                                    <div data-sort="week" class="schedule-holder add">
+                                        <div class="film-info">
+                                            <div class="title-heading">
+                                                <a th:text="${entry.key.title}"
+                                                   class="film-name" href="/ua/show/10373-dedpul-i-rosomaha-deadpool-wolverine/kyiv/boomer">
+                                                    Film Title
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div th:each="dateSessions : ${entry.value}" class="schedule-frame">
+                                            <span th:text="${dateSessions.key}" class="day-schedule">Session Date</span>
+
+                                            <ul class="schedule-list">
+                                                <li th:each="moviesession : ${dateSessions.value}">
+                                                    <a th:href="@{'/seats/' + ${moviesession.getId()}}">
+                                                        <span th:text="${moviesession.startTime.toLocalTime()}">Time</span>
+                                                    </a>
+
+                                                    <!-- Кнопка редагувати з іконкою олівця -->
+                                                    <a th:href="@{/admin/update}" class="blue-button">
+                                                        &#9998; Edit
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!-- Кнопка створити новий сеанс -->
+        <div class="blue-button create-button">
+            <a th:href="@{/admin/create}">
+                Створити нову сесію
+            </a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

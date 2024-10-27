@@ -39,6 +39,12 @@
                           Film Title
                         </a>
                       </div>
+                      <span class="sub-title" th:if="${entry.key.genre}">
+                        <span th:text="${entry.key.genre}"></span>
+                      </span>
+                      <span class="sub-title" th:unless="${entry.key.genre}">
+                        <span>Unknown genre</span>
+                      </span>
                     </div>
 
                     <div th:each="dateSessions : ${entry.value}"

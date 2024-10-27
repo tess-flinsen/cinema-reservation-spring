@@ -10,6 +10,11 @@
 <header>
   <h3 th:text="${movieSession.movie.title}">Movie Title</h3>
   <h4 th:text="${movieSession.startTime}">Session Name</h4>
+  <h4 th:switch="${movieSession.startTime.toLocalTime().hour}">
+    <div th:case="10">Morning Session</div>
+    <div th:case="15">Afternoon Session</div>
+    <div th:case="18">Evening Session</div>
+  </h4>
   <span>Price</span>
   <span th:text="${movieSession.price}"></span>
 </header>

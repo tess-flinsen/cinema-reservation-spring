@@ -17,7 +17,7 @@ public class MovieRepositoryStub implements MovieRepository {
 
     @Override
     public List<Movie> findAll() {
-        Movie movie1 = new Movie("title1", "genre1", 111);
+        Movie movie1 = new Movie("title1", null, 111);
         Movie movie2 = new Movie("title2", "genre2", 222);
         Movie movie3 = new Movie("title3", "genre3", 333);
         movie1.setId(1L);

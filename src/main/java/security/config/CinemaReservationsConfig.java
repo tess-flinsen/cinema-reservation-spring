@@ -1,4 +1,4 @@
-package ist.kpi.ua.CinemaReservations.config;
+package security.config;
 
 import ist.kpi.ua.CinemaReservations.repository.BookingRepository;
 import ist.kpi.ua.CinemaReservations.repository.stub.BookingRepositoryStub;

@@ -1,10 +1,10 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+}
+
+.navbar {
+    margin-bottom: 20px; 
 }
 
 .form-container {
@@ -13,6 +13,10 @@ body {
     border-radius: 10px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
     width: 400px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .form-container h2 {
@@ -95,10 +99,6 @@ body {
 .custom-file-upload:hover {
     background-color: #007bff;
     color: #fff;
-}
-
-input[type="file"] {
-    /*display: none;*/
 }
 
 .form-container button {

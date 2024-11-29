@@ -1,4 +1,4 @@
-package ist.kpi.ua.CinemaReservations.controller;
+package ist.kpi.ua.CinemaReservations.controller.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,10 +52,10 @@ public class AuthController {
         }
 
         userService.saveUser(userDto);
-        return "redirect:/register?success";
+        return "redirect:/login";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin/users")
     public String users(Model model){
         List<UserDto> users = userService.findAllUsers();
         model.addAttribute("users", users);

@@ -1,11 +1,18 @@
 package ist.kpi.ua.CinemaReservations.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
+@Table(name = "bookings")
 public class Booking {
 
     @Id
@@ -15,14 +22,19 @@ public class Booking {
     @ManyToOne
     private Session session;
 
-    @ManyToMany(mappedBy = "bookings")
+    @ManyToMany
+    @JoinTable(
+        name = "booking_seat",  // Name of the join table
+        joinColumns = @JoinColumn(name = "booking_id"),
+        inverseJoinColumns = @JoinColumn(name = "seat_id")
+    )
     private List<Seat> seats;
 
+    @Column(nullable = false)
     private boolean isBooked; 
 
+    @Column(nullable = false)
     private Double totalPrice;
-
-    public Booking() {}
 
     public Booking(Session session, List<Seat> seats, boolean isBooked) {
         this.session = session;
@@ -54,39 +66,6 @@ public class Booking {
     
     public void updateTotalPrice() {
         this.totalPrice = calculateTotalPrice();
-    }
-
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Session getSession() {
-        return session;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
-    public List<Seat> getSeats() {
-        return seats;
-    }
-
-    public void setSeats(List<Seat> seats) {
-        this.seats = seats;
     }
 
     public boolean isBooked() {

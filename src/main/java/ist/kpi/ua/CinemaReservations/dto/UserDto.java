@@ -27,4 +27,14 @@ public class UserDto
     
     @NotEmpty(message = "Password should not be empty")
     private String password;
+
+    private boolean isAdmin;
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 }

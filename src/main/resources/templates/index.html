@@ -2,71 +2,69 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Кінотеатр</title>
-  <link href="./css/styles.css?version=1" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Movie images from https://www.cinepolisusa.com/movies/ -->
 </head>
 <body>
 
 <header>
-  <div>
-    <h1>Cinema Tickets Reservation Website</h1>
-  </div>
+    <div>
+        <h1>Cinema Tickets Reservation Website</h1>
+    </div>
 </header>
 
-<div id="wrapper">
-  <div id="content" >
+<div id="wrapper" class="container my-5">
+  <div id="content">
     <div class="tabs-holder">
       <div class="tab-content">
         <div class="tab" id="tab-table">
           <section class="schedule-section">
             <div class="schedule-section-holder">
-              <div th:each="entry : ${moviesWithGroupedSessions}" class="schedule-box">
-                <div class="schedule-row">
-                  <a class="film-logo-holder" href="/ua/show/10373-dedpul-i-rosomaha-deadpool-wolverine/kyiv/boomer">
-                    <img th:alt="${entry.key.title}"
-                         th:src="@{'/images/' + ${entry.key.getId()} + '.jpg'}"
-                         width="175"
-                         height="248"/>
-                  </a>
+              <div th:each="entry : ${moviesWithGroupedSessions}" class="schedule-box mb-4">
+                <div class="row align-items-center g-3">
+                  <div class="col-md-3">
+                    <a class="film-logo-holder d-block" href="/ua/show/10373-dedpul-i-rosomaha-deadpool-wolverine/kyiv/boomer">
+                      <img 
+                        th:alt="${entry.key.title}"
+                        th:src="@{'/images/' + ${entry.key.getId()} + '.jpg'}"
+                        class="img-fluid rounded shadow-sm"
+                        width="175" 
+                        height="248" />
+                    </a>
+                  </div>
 
-                  <div data-sort="week" class="schedule-holder add">
+                  <div class="col-md-9">
                     <div class="film-info">
-                      <div class="title-heading">
-                        <a th:text="${entry.key.title}"
-                           class="film-name" href="/ua/show/10373-dedpul-i-rosomaha-deadpool-wolverine/kyiv/boomer">
+                      <h3 class="title-heading">
+                        <a th:text="${entry.key.title}" 
+                           class="film-name text-dark text-decoration-none">
                           Film Title
                         </a>
-                      </div>
-                      <span class="sub-title" th:if="${entry.key.genre}">
+                      </h3>
+                      <span class="sub-title text-secondary" th:if="${entry.key.genre}">
                         <span th:text="${entry.key.genre}"></span>
                       </span>
-                      <span class="sub-title" th:unless="${entry.key.genre}">
+                      <span class="sub-title text-muted" th:unless="${entry.key.genre}">
                         <span>Unknown genre</span>
                       </span>
                     </div>
 
-                    <div th:each="dateSessions : ${entry.value}"
-                         class="schedule-frame">
-                     <span th:text="${dateSessions.key}"
-                           class="day-schedule">
-                       Session Date
-                     </span>
-
-                      <ul class="schedule-list">
-                        <li th:each="moviesession : ${dateSessions.value}">
-                          <a th:href="@{'/seats/' + ${moviesession.getId()}}">
-                          <span th:text="${moviesession.startTime.toLocalTime()}">Time</span>
+                    <div th:each="dateSessions : ${entry.value}" class="schedule-frame mt-3">
+                      <p class="fw-bold" th:text="${dateSessions.key}">Session Date</p>
+                      <ul class="schedule-list list-unstyled d-flex flex-wrap">
+                        <li th:each="moviesession : ${dateSessions.value}" class="me-3">
+                          <a th:href="@{'/seats/' + ${moviesession.getId()}}" class="btn btn-outline-secondary btn-sm">
+                            <span th:text="${moviesession.startTime.toLocalTime()}">Time</span>
                           </a>
                         </li>
                       </ul>
                     </div>
 
-
                   </div>
-                </div>
-              </div>
+                </div> <!-- End Row -->
+              </div> <!-- End Schedule Box -->
             </div>
           </section>
         </div>
@@ -74,5 +72,7 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

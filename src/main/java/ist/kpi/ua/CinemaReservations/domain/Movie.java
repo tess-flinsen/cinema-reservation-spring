@@ -1,24 +1,37 @@
 package ist.kpi.ua.CinemaReservations.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
-
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
+@Table(name = "movies")
 public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    
+    @Column(nullable = false)
     private String title;
     private String genre;
+    @Column(nullable = false)
     private Integer duration;
 
-    @OneToMany(mappedBy = "movie")
-    private List<Session> sessions;
-
-    public Movie() {};
+    @OneToMany(
+        mappedBy = "movie",
+        cascade = CascadeType.ALL, // Cascade persist, merge, etc.
+        //orphanRemoval = true,      // Remove sessions when the movie is deleted
+        fetch = FetchType.LAZY     // Load sessions only when accessed
+    )
+    private List<Session> sessions = new ArrayList<>();
 
     public Movie(String title, String genre, Integer duration) {
         this.title = title;
@@ -26,35 +39,6 @@ public class Movie {
         this.duration = duration;
     }
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String getTitle() {
-        return title;
-    }
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    public String getGenre() {
-        return genre;
-    }
-    public void setGenre(String genre) {
-        this.genre = genre;
-    }
-    public Integer getDuration() {
-        return duration;
-    }
-    public void setDuration(Integer duration) {
-        this.duration = duration;
-    }
-
     public void setSessions(List<Session> sessions) {this.sessions = sessions;}
     public List<Session> getSessions() { return sessions; }
-
-
-
-
 }

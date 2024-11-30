@@ -4,7 +4,9 @@ import ist.kpi.ua.CinemaReservations.domain.Movie;
 import java.util.List;
 import java.util.Optional;
 
-public interface MovieRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MovieRepository extends JpaRepository<Movie, Long> {
     List<Movie> findAll();
     Optional<Movie> findById(Long id);
     Movie save(Movie movie);

@@ -506,3 +506,42 @@ a:active:not(.btn-all-dates) {
     color: white;
     text-decoration: none;
 }
+
+.navbar {
+    background-color: #343a40; /* Dark background */
+    padding: 1rem 2rem; /* Padding for top and bottom */
+}
+
+/* Navbar content */
+.navbar .container {
+    display: flex;
+    justify-content: space-between; /* Align items with space between */
+    align-items: center;
+}
+
+.navbar-title {
+    color: white;
+    margin: 0;
+}
+
+.navbar-title .navbar-link {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-title .navbar-link:hover {
+    text-decoration: underline;
+}
+
+.btn-logout {
+    background-color: #dc3545; 
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.btn-logout:hover {
+    background-color: #c82333; 
+}

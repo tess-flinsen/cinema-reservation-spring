@@ -4,6 +4,7 @@ import ist.kpi.ua.CinemaReservations.domain.Movie;
 import ist.kpi.ua.CinemaReservations.domain.Session;
 import ist.kpi.ua.CinemaReservations.service.MovieService;
 import org.springframework.ui.Model;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -21,7 +22,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
+    public String index(Model model, Authentication authentication){
 
         Map<Movie, Map<String, List<Session>>> moviesWithGroupedSessions = movieService.getAll().stream()
                 .collect(Collectors.toMap(
@@ -38,7 +39,14 @@ public class HomeController {
                         LinkedHashMap::new
                 ));
 
+        if (authentication != null && authentication.isAuthenticated()) {
+            model.addAttribute("username", authentication.getName());
+        } else {
+            model.addAttribute("username", "Guest");
+        }       
+
         model.addAttribute("moviesWithGroupedSessions", moviesWithGroupedSessions);
         return "index";
     }
 }
+

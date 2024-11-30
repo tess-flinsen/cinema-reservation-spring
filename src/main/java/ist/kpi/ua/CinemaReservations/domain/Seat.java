@@ -1,12 +1,18 @@
 package ist.kpi.ua.CinemaReservations.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@Table(name = "seats")
 public class Seat {
     
     @Id
@@ -15,14 +21,15 @@ public class Seat {
     
     private Integer rowNumber;
     private Integer seatNumber;
+
+    @Column(nullable = false)
     private boolean isAvailable;
 
     private Double priceModifier = 1.0;  // за замовчуванням коефіцієнт ціни за певне місце = 1
 
     @ManyToMany(mappedBy = "seats")
     private List<Booking> bookings;
-    
-    public Seat() {}
+
 
     public Seat(Integer rowNumber, Integer seatNumber, boolean isAvailable) { // використовується коефіцієнт ціни за замовчуванням
         this.rowNumber = rowNumber;
@@ -37,12 +44,6 @@ public class Seat {
         setPriceModifier(priceModifier);  // використовуємо сеттер для перевірки валідності коефіцієнту
     }
 
-    public List<Booking> getBookings() { 
-        return bookings; 
-    }
-    public void setBookings(List<Booking> bookings) { 
-        this.bookings = bookings; 
-    }
     public void addBooking(Booking booking) {
         if (this.bookings == null) {
             this.bookings = new ArrayList<Booking>(List.of(booking));
@@ -50,30 +51,6 @@ public class Seat {
         else {
             this.bookings.add(booking);
         }
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getRowNumber() {
-        return rowNumber;
-    }
-
-    public void setRowNumber(Integer rowNumber) {
-        this.rowNumber = rowNumber;
-    }
-
-    public Integer getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(Integer seatNumber) {
-        this.seatNumber = seatNumber;
     }
 
     public boolean isAvailable() {

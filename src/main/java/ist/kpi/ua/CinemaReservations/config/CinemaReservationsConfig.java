@@ -3,6 +3,7 @@ package ist.kpi.ua.CinemaReservations.config;
 // import ist.kpi.ua.CinemaReservations.repository.BookingRepository;
 // import ist.kpi.ua.CinemaReservations.repository.stub.BookingRepositoryStub;
 import ist.kpi.ua.CinemaReservations.service.EmailService;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -21,6 +22,11 @@ public class CinemaReservationsConfig {
     @Scope("prototype")
     public EmailService emailService() {
         return new EmailService();
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 
 }

@@ -5,6 +5,7 @@ import ist.kpi.ua.CinemaReservations.repository.SessionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,7 +22,13 @@ public class SessionService {
         this.sessionRepository = sessionRepository;
     }*/
 
-    public Optional<Session> getById(long id) {
+    public Optional<Session> getById(Long id) {
         return sessionRepository.findById(id);
     }
+
+    public List<Session> getAll() { return sessionRepository.findAll(); }
+
+    public Session save(Session session) { return sessionRepository.save(session); }
+
+    public void deleteById(Long id) { sessionRepository.deleteById(id); }
 }

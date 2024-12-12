@@ -1,6 +1,6 @@
 package ist.kpi.ua.CinemaReservations.config;
 
-// import ist.kpi.ua.CinemaReservations.repository.BookingRepository;
+// import ist.kpi.ua.CinemaReservations.repository.jpa.BookingRepository;
 // import ist.kpi.ua.CinemaReservations.repository.stub.BookingRepositoryStub;
 import ist.kpi.ua.CinemaReservations.service.EmailService;
 import org.modelmapper.ModelMapper;

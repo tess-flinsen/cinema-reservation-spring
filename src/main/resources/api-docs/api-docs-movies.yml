@@ -1,0 +1,151 @@
+openapi: 3.0.3
+info:
+  title: Cinema Reservations API
+  version: 1.0.0
+  description: API для управління кінофільмами.
+
+paths:
+  /api/movies:
+    get:
+      summary: Get all movies
+      description: Retrieves a page of movies based on optional filter criteria and pagination parameters.
+      parameters:
+        - name: title
+          in: query
+          description: Filter movies by title (optional)
+          schema:
+            type: string
+        - name: genre
+          in: query
+          description: Filter movies by genre (optional)
+          schema:
+            type: string
+        - name: page
+          in: query
+          description: Page number (default 0)
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          description: Page size (default 5)
+          schema:
+            type: integer
+            default: 5
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MovieDto'
+        '404':
+          description: Not Found
+    post:
+      summary: Create a new movie
+      description: Creates a new movie based on the provided MovieDto object in the request body.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieDto'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieDto'
+        '400':
+          description: Bad Request
+  /api/movies/{id}:
+    get:
+      summary: Get a movie by ID
+      description: Retrieves a single movie by its unique identifier.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the movie to retrieve
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieDto'
+        '404':
+          description: Not Found
+    put:
+      summary: Update a movie
+      description: Updates an existing movie based on the provided MovieDto object in the request body. The ID in the path must match the ID in the request body.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the movie to update
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MovieDto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieDto'
+        '400':
+          description: Bad Request
+    delete:
+      summary: Delete a movie
+      description: Deletes an existing movie by its ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the movie to delete
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+
+components:
+  schemas:
+    MovieDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        genre:
+          type: string
+        duration:
+          type: integer
+        releaseDate:
+          type: string
+          format: date
+        director:
+          type: string
+        actors:
+          type: array
+          items:
+            type: string
+        description:
+          type: string

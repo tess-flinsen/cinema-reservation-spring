@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  title: Cinema Reservations API
+  version: 1.0.0
+paths:
+  /api/sessions:
+    get:
+      summary: Get all sessions
+      description: "Retrieves a list of all available sessions"
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SessionDto'
+        '500':
+          description: "Internal Server Error"
+    post:
+      summary: Create a new session
+      description: "Creates a new session based on the provided details in the request body"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionDto'
+      responses:
+        '201':
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionDto'
+        '400':
+          description: "Bad Request"
+        '500':
+          description: "Internal Server Error"
+  /api/sessions/{id}:
+    get:
+      summary: Get session by ID
+      description: "Retrieves a specific session by its unique identifier"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Session ID"
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionDto'
+        '404':
+          description: "Not Found"
+        '500':
+          description: "Internal Server Error"
+    put:
+      summary: Update an existing session
+      description: "Updates an existing session based on the provided details in the request body and path variable"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Session ID"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionDto'
+      responses:
+        '200':
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionDto'
+        '400':
+          description: "Bad Request"
+        '500':
+          description: "Internal Server Error"
+    delete:
+      summary: Delete a session
+      description: "Deletes a session by its unique identifier"
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: "Session ID"
+      responses:
+        '204':
+          description: "No Content"
+        '400':
+          description: "Bad Request"
+        '500':
+          description: "Internal Server Error"
+components:
+  schemas:
+    SessionDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: "Unique identifier for the session"
+        movieId:
+          type: integer
+          description: "ID of the movie associated with the session"
+        startTime:
+          type: string
+          format: date-time
+          description: "Start time of the session"
+        endTime:
+          type: string
+          format: date-time
+          description: "End time of the session"
+      required:
+        - id
+        - movieId
+        - startTime
+        - endTime
